@@ -1,0 +1,72 @@
+/* KSE University page — section helpers (pairs with kit.css + ../../colors_and_type.css) */
+
+/* Numbered section header: "02 — Faculties & Schools           All faculties →" */
+.usec{padding:88px 0;border-top:1px solid var(--kse-border-soft);}
+.usec--wash{background:var(--kse-bg-light-2);}
+.usec__head{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;margin-bottom:40px;}
+.usec__num{font-family:var(--kse-font-ui);font-size:13px;font-weight:700;letter-spacing:.12em;
+  color:var(--kse-secondary);display:none;margin-bottom:14px;}
+.usec__title{font-size:40px;line-height:1.06;font-weight:500;letter-spacing:-0.028em;margin:0;}
+.usec__link{font-family:var(--kse-font-ui);font-size:14px;font-weight:600;display:inline-flex;
+  align-items:center;gap:7px;white-space:nowrap;padding-bottom:6px;}
+.usec__link:hover{gap:11px;}
+
+/* Editorial list row (faculties) */
+.urow{display:grid;grid-template-columns:minmax(0,1.1fr) 150px minmax(0,1.4fr) 32px;align-items:center;
+  gap:28px;padding:24px 4px;border-top:1px solid var(--kse-border);transition:.15s;cursor:pointer;}
+.urow:last-child{border-bottom:1px solid var(--kse-border);}
+.urow:hover{padding-left:12px;padding-right:0;}
+.urow__name{font-size:24px;font-weight:500;letter-spacing:-0.02em;}
+.urow__degrees{display:flex;gap:6px;}
+.udeg{font-family:var(--kse-font-ui);font-size:11px;font-weight:600;color:var(--kse-secondary);
+  border:1px solid var(--kse-border);border-radius:999px;padding:4px 9px;white-space:nowrap;}
+.urow__desc{font-size:15px;color:var(--kse-desc-light);}
+.urow__arrow{display:flex;justify-content:flex-end;color:var(--kse-secondary);}
+
+/* Wayfinding link rows (research) */
+.uways{display:grid;grid-template-columns:repeat(4,1fr);gap:0 40px;}
+.uway{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:18px 0;
+  border-top:1px solid var(--kse-border);transition:.15s;cursor:pointer;}
+.uway:hover{padding-left:6px;}
+.uway__t{font-size:17px;font-weight:500;letter-spacing:-0.01em;white-space:nowrap;}
+.uway__s{font-family:var(--kse-font-ui);font-size:12px;color:var(--kse-secondary);margin-top:3px;}
+
+/* People strip */
+.people{display:flex;gap:14px;flex-wrap:wrap;}
+.person{display:flex;align-items:center;gap:12px;border:1px solid var(--kse-border);border-radius:999px;
+  padding:8px 16px 8px 8px;cursor:pointer;transition:.15s;}
+.person:hover{background:#fff;box-shadow:var(--kse-shadow-sm);}
+.person__av{width:38px;height:38px;border-radius:50%;background:var(--kse-accent);color:#fff;
+  display:flex;align-items:center;justify-content:center;font-family:var(--kse-font-ui);font-size:13px;font-weight:600;}
+.person__n{font-size:14px;font-weight:600;font-family:var(--kse-font-ui);}
+.person__r{font-size:12px;color:var(--kse-secondary);}
+
+/* Image placeholder block */
+.imgph{background:var(--kse-placeholder);border-radius:12px;position:relative;overflow:hidden;}
+.imgph__lbl{position:absolute;left:14px;bottom:12px;font-family:var(--kse-font-ui);font-size:12px;
+  font-weight:600;color:var(--kse-secondary);}
+
+/* Placeholder page layout (shared by all scaffolded routes) */
+.page{padding:56px 0 120px;min-height:62vh;}
+.crumbs{display:flex;align-items:center;gap:10px;font-family:var(--kse-font-ui);font-size:13px;
+  font-weight:600;margin-bottom:26px;}
+.crumbs__sep{color:var(--kse-border);}
+.crumbs__link{color:var(--kse-secondary);transition:.15s;}
+.crumbs__link:hover{color:#0D0D0D;}
+.crumbs__here{color:#0D0D0D;}
+.page__title{font-size:48px;line-height:1.04;font-weight:500;letter-spacing:-0.03em;margin:0;max-width:18ch;}
+.page__desc{font-size:18px;color:var(--kse-desc-light);margin:16px 0 40px;max-width:54ch;line-height:1.5;}
+.page__empty{margin-top:48px;display:flex;align-items:center;justify-content:center;gap:10px;
+  min-height:280px;border:1px dashed var(--kse-border);border-radius:14px;background:var(--kse-bg-light-2);
+  font-family:var(--kse-font-ui);font-size:14px;font-weight:600;color:var(--kse-secondary);}
+
+/* Quiet quick-link chips (hero + resources) */
+.qlinks{display:flex;gap:10px;flex-wrap:wrap;}
+.qlink{display:inline-flex;align-items:center;gap:7px;font-family:var(--kse-font-ui);font-size:14px;
+  font-weight:600;border:1px solid var(--kse-border);border-radius:999px;padding:9px 16px;cursor:pointer;
+  background:#fff;transition:.15s;white-space:nowrap;}
+.qlink:hover{background:var(--kse-bg-light-2);border-color:#bcbcbc;}
+
+@media(max-width:480px){
+  .prog-grid{grid-template-columns:1fr !important;}
+}

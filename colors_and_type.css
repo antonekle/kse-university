@@ -1,0 +1,156 @@
+/* ============================================================
+   KSE — Kyiv School of Economics
+   WebSprout UI Kit · Color + Type Foundations
+   Source of truth: KSE Prototyping & UI Kit (Figma)
+   ============================================================ */
+
+/* ---------- Fonts ---------- */
+/* KSE Sans — the brand typeface (body + headings). Provided as woff2. */
+@font-face {
+  font-family: "KSE Sans";
+  src: url("fonts/KSE-SansRegular.woff2") format("woff2"),
+       url("fonts/KSE-SansRegular.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "KSE Sans";
+  src: url("fonts/KSE-SansMedium.woff2") format("woff2"),
+       url("fonts/KSE-SansMedium.woff") format("woff");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "KSE Sans";
+  src: url("fonts/KSE-SansBold.woff2") format("woff2"),
+       url("fonts/KSE-SansBold.woff") format("woff");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+/* Plus Jakarta Sans (UI labels, buttons) + the logo serif are loaded via
+   Google Fonts in each HTML file:
+   Plus+Jakarta+Sans:wght@400;500;600;700  and  Playfair+Display:wght@700;900
+   Playfair Display is a SUBSTITUTE for the custom KSE serif wordmark. */
+
+:root {
+  /* ===== Brand colors ===== */
+  --kse-primary:        #0D0D0D;  /* near-black ink, brand primary */
+  --kse-black:          #000000;  /* pure black — button fills */
+  --kse-primary-tint:   #262626;  /* hover / pressed primary */
+  --kse-secondary:      #616161;  /* secondary text + UI */
+  --kse-secondary-tint: #808080;
+  --kse-accent:         #1A1F3B;  /* deep navy accent */
+  --kse-accent-tint:    #3B4565;  /* lighter navy */
+  --kse-accent-band:    #21273A;  /* dark CTA band (rgb 33,39,58) */
+
+  /* ===== Text colors ===== */
+  --kse-title-light:    #0D0D0D;  /* headings on light bg */
+  --kse-desc-light:     #808080;  /* body / supporting on light bg */
+  --kse-title-dark:     #FFFFFF;  /* headings on dark bg */
+  --kse-desc-dark:      #CBCCCD;  /* body / supporting on dark bg */
+
+  /* ===== Background colors ===== */
+  --kse-bg-light-1:     #FFFFFF;
+  --kse-bg-light-2:     #F9F9FB;  /* page wash / hero bg */
+  --kse-bg-dark-1:      #0C0D37;  /* deep navy section */
+  --kse-bg-dark-2:      #0D0D0D;  /* near-black section */
+
+  /* ===== System / support ===== */
+  --kse-neutral:        #D6D6D6;  /* dividers, borders, placeholders */
+  --kse-border:         #D6D6D6;
+  --kse-border-soft:    #E8E8EC;
+  --kse-placeholder:    #EDEDF0;  /* image placeholder grey */
+
+  /* ===== Type families ===== */
+  --kse-font-sans:   "KSE Sans", "Plus Jakarta Sans", system-ui, sans-serif;
+  --kse-font-ui:     "Plus Jakarta Sans", "KSE Sans", system-ui, sans-serif;
+  --kse-font-serif:  "Playfair Display", Georgia, "Times New Roman", serif; /* decorative serif (the official KSE wordmark ships as assets/kse-logo.svg) */
+
+  /* ===== Type scale (px) ===== */
+  --kse-h-2xl: 72px;   /* line 90px */
+  --kse-h-xl:  60px;   /* line 72px */
+  --kse-h-lg:  48px;   /* line 60px */
+  --kse-h-md:  36px;   /* line 44px */
+  --kse-h-sm:  30px;   /* line 38px */
+  --kse-body-lg: 18px; /* line 28px */
+  --kse-body-md: 16px; /* line 24px */
+  --kse-body-sm: 14px; /* line 20px */
+  --kse-caption: 12px; /* line 18px */
+
+  /* ===== Radii ===== */
+  --kse-radius-sm:  8px;
+  --kse-radius-md:  12px;   /* cards */
+  --kse-radius-lg:  16px;   /* buttons */
+  --kse-radius-xl:  20px;   /* large panels */
+  --kse-radius-full: 999px; /* pills, tags */
+
+  /* ===== Spacing scale (4pt base) ===== */
+  --kse-sp-1: 4px;
+  --kse-sp-2: 8px;
+  --kse-sp-3: 12px;
+  --kse-sp-4: 16px;
+  --kse-sp-5: 24px;
+  --kse-sp-6: 32px;
+  --kse-sp-7: 48px;
+  --kse-sp-8: 64px;
+  --kse-sp-9: 80px;
+
+  /* ===== Shadow system (Untitled-UI scale, used across the kit) ===== */
+  --kse-shadow-xs: 0px 1px 2px 0px rgba(16,24,40,0.05);
+  --kse-shadow-sm: 0px 1px 3px 0px rgba(16,24,40,0.10), 0px 1px 2px 0px rgba(16,24,40,0.06);
+  --kse-shadow-md: 0px 4px 8px -2px rgba(16,24,40,0.10), 0px 2px 4px -2px rgba(16,24,40,0.06);
+  --kse-shadow-lg: 0px 12px 16px -4px rgba(16,24,40,0.08), 0px 4px 6px -2px rgba(16,24,40,0.03);
+  --kse-shadow-xl: 0px 20px 24px -4px rgba(16,24,40,0.08), 0px 8px 8px -4px rgba(16,24,40,0.03);
+  --kse-shadow-2xl: 0px 24px 48px -12px rgba(16,24,40,0.18);
+  --kse-shadow-3xl: 0px 32px 64px -12px rgba(16,24,40,0.14);
+}
+
+/* ============================================================
+   Semantic element defaults
+   ============================================================ */
+.kse-body {
+  font-family: var(--kse-font-sans);
+  font-size: var(--kse-body-md);
+  line-height: 24px;
+  color: var(--kse-title-light);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Headings use KSE Sans Medium, tight tracking */
+.kse-h1, .kse-h2, .kse-h3, .kse-h4 {
+  font-family: var(--kse-font-sans);
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  color: var(--kse-title-light);
+  margin: 0;
+  text-wrap: balance;
+}
+.kse-h1 { font-size: var(--kse-h-2xl); line-height: 90px; }
+.kse-h2 { font-size: var(--kse-h-lg);  line-height: 60px; }
+.kse-h3 { font-size: var(--kse-h-md);  line-height: 44px; }
+.kse-h4 { font-size: var(--kse-h-sm);  line-height: 38px; }
+
+.kse-lead   { font-size: var(--kse-body-lg); line-height: 28px; color: var(--kse-desc-light); }
+.kse-p      { font-size: var(--kse-body-md); line-height: 24px; color: var(--kse-desc-light); }
+.kse-small  { font-size: var(--kse-body-sm); line-height: 20px; color: var(--kse-desc-light); }
+.kse-eyebrow{
+  font-family: var(--kse-font-ui);
+  font-size: var(--kse-caption);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--kse-secondary);
+}
+
+/* Logo wordmark — high-contrast serif */
+.kse-wordmark {
+  font-family: var(--kse-font-serif);
+  font-weight: 900;
+  letter-spacing: 0.01em;
+  color: var(--kse-primary);
+  line-height: 1;
+}

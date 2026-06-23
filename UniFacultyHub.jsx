@@ -3,15 +3,15 @@
 
 const FACULTY_HUB_DATA = {
   engineering: {
-    title: "School of Engineering",
+    title: "Engineering School",
     subtitle: "Engineering, data science, and applied mathematics.",
     tag: "Faculty",
     programs: [
-      { name: "Software Engineering",        level: "BA", href: "https://university.kse.ua/bakalavrat/inzheneriya-programnogo-zabezpechennya" },
-      { name: "Artificial Intelligence",     level: "BA", href: "https://university.kse.ua/bakalavrat/shtuchnyi-intelekt" },
-      { name: "Applied Mathematics",         level: "BA", href: "https://university.kse.ua/bakalavrat/prykladna-matematyka" },
-      { name: "Unmanned Aerial Vehicles",    level: "MA", href: "https://university.kse.ua/magistratura/bezpilotni-aviatsiini-kompleksy" },
-      { name: "Micro and Nanoelectronics",   level: "MA", href: "https://university.kse.ua/magistratura/mikro-ta-nanoelektronika" },
+      { name: "Software Engineering",        level: "BA", slug: "software-engineering" },
+      { name: "Artificial Intelligence",     level: "BA", slug: "artificial-intelligence" },
+      { name: "Applied Mathematics",         level: "BA", slug: "applied-mathematics" },
+      { name: "Unmanned Aerial Vehicles",    level: "MA", slug: "unmanned-aerial-vehicles" },
+      { name: "Micro and Nanoelectronics",   level: "MA", slug: "micro-and-nanoelectronics" },
     ],
   },
   "computer-technologies": {
@@ -19,9 +19,9 @@ const FACULTY_HUB_DATA = {
     subtitle: "Software, cybersecurity, and intelligent systems.",
     tag: "Faculty",
     programs: [
-      { name: "Software Engineering",    level: "BA", href: "https://university.kse.ua/bakalavrat/inzheneriya-programnogo-zabezpechennya" },
-      { name: "Cybersecurity",           level: "BA", href: "https://university.kse.ua/bakalavrat/kiberbezpeka" },
-      { name: "Artificial Intelligence", level: "BA", href: "https://university.kse.ua/bakalavrat/shtuchnyi-intelekt" },
+      { name: "Software Engineering",    level: "BA", slug: "software-engineering" },
+      { name: "Cybersecurity",           level: "BA", slug: "cybersecurity" },
+      { name: "Artificial Intelligence", level: "BA", slug: "artificial-intelligence" },
     ],
   },
   mathematics: {
@@ -29,10 +29,10 @@ const FACULTY_HUB_DATA = {
     subtitle: "Pure and applied mathematics, physical and mathematical sciences.",
     tag: "Faculty",
     programs: [
-      { name: "Applied Mathematics",                       level: "BA", href: "https://university.kse.ua/bakalavrat/prykladna-matematyka" },
-      { name: "Physical Mathematics",                      level: "BA", href: "https://university.kse.ua/bakalavrat/fizyko-matematychna" },
-      { name: "Mathematics",                               level: "MA", href: "https://university.kse.ua/magistratura/matematyka" },
-      { name: "Bioinformatics and Biomedical Data Analysis", level: "MA", href: "https://university.kse.ua/magistratura/bioinformatyka-ta-biomedychni-dani" },
+      { name: "Applied Mathematics",                       level: "BA", slug: "applied-mathematics" },
+      { name: "Physical Mathematics",                      level: "BA", slug: "physical-mathematics" },
+      { name: "Mathematics",                               level: "MA", slug: "mathematics" },
+      { name: "Bioinformatics and Biomedical Data Analysis", level: "MA", slug: "bioinformatics" },
     ],
   },
   "social-sciences": {
@@ -40,12 +40,12 @@ const FACULTY_HUB_DATA = {
     subtitle: "Psychology, sociology, public policy, and urban studies.",
     tag: "Faculty",
     programs: [
-      { name: "Psychology",                        level: "BA", href: "https://university.kse.ua/bakalavrat/psykhologiya" },
-      { name: "Law",                               level: "BA", href: "https://university.kse.ua/bakalavrat/pravo" },
-      { name: "Public Policy and Governance",      level: "MA", href: "https://university.kse.ua/magistratura/publichna-polityka-ta-vryaduvannya" },
-      { name: "Urbanism and Postwar Reconstruction", level: "MA", href: "https://university.kse.ua/magistratura/urbanism-ta-pislyavoienna-rekonstruktsiya" },
-      { name: "Social Psychology",                 level: "MA", href: "https://university.kse.ua/magistratura/sotsialna-psykholohiya" },
-      { name: "Memory and Conflict Studies",       level: "MA", href: "https://university.kse.ua/magistratura/memory-studies-ta-publichna-istoriya" },
+      { name: "Psychology",                        level: "BA", slug: "psychology" },
+      { name: "Law",                               level: "BA", slug: "law" },
+      { name: "Public Policy and Governance",      level: "MA", slug: "public-policy-governance" },
+      { name: "Urbanism and Postwar Reconstruction", level: "MA", slug: "urbanism-reconstruction" },
+      { name: "Social Psychology",                 level: "MA", slug: "social-psychology" },
+      { name: "Memory and Conflict Studies",       level: "MA", slug: "memory-conflict-studies" },
     ],
   },
   economics: {
@@ -53,13 +53,38 @@ const FACULTY_HUB_DATA = {
     subtitle: "Economic theory, data, business, and finance.",
     tag: "Faculty",
     programs: [
-      { name: "Business Economics",              level: "BA", href: "https://university.kse.ua/bakalavrat/biznes-ekonomika" },
-      { name: "Economics and Big Data",          level: "BA", href: "https://university.kse.ua/bakalavrat/ekonomika-ta-veliki-dani" },
-      { name: "Business and Finance Economics",  level: "MA", href: "https://university.kse.ua/magistratura/biznes-ta-finansova-ekonomika" },
-      { name: "Economic Analysis",               level: "MA", href: "https://university.kse.ua/magistratura/ekonomichnyi-analiz" },
+      { name: "Business Economics",              level: "BA", slug: "business-economics" },
+      { name: "Economics and Big Data",          level: "BA", slug: "economics-big-data" },
+      { name: "Business and Finance Economics",  level: "MA", slug: "business-finance-economics" },
+      { name: "Economic Analysis",               level: "MA", slug: "economic-analysis" },
     ],
   },
 };
+
+/* ─── Faculty staff block: cards for this faculty + link to full directory ── */
+function FacultyStaffSection({ staff }) {
+  return (
+    <section className="usec usec--wash">
+      <div className="kse-shell">
+        <div className="usec__head" style={{ marginBottom: 24 }}>
+          <div>
+            <div style={{ fontFamily: "var(--kse-font-ui)", fontSize: 11, fontWeight: 700,
+              letterSpacing: ".13em", textTransform: "uppercase", color: "var(--kse-secondary)", marginBottom: 10 }}>
+              People
+            </div>
+            <h2 className="usec__title">Faculty</h2>
+          </div>
+          <a href="#" className="usec__link" onClick={(e) => { e.preventDefault(); routeGo("people"); }}>
+            All faculty <Icon name="arrow_forward" size={18} />
+          </a>
+        </div>
+        <div className="people-grid">
+          {staff.map(p => <PersonCard key={p.slug} person={p} />)}
+        </div>
+      </div>
+    </section>
+  );
+}
 
 /* ─── Placeholder stub section ─────────────────────────────────────── */
 function StubSection({ title, icon }) {
@@ -103,7 +128,7 @@ function FacultyHubLayout({ facultyKey, onNav, onCta }) {
           <nav className="crumbs" style={{ paddingTop: 28 }}>
             <a href="#" className="crumbs__link" onClick={(e) => { e.preventDefault(); routeGo(""); }}>Home</a>
             <span className="crumbs__sep">/</span>
-            <a href="#" className="crumbs__link" onClick={(e) => { e.preventDefault(); routeGo("faculties"); }}>Faculties &amp; Schools</a>
+            <a href="#" className="crumbs__link" onClick={(e) => { e.preventDefault(); routeGo("faculties"); }}>Faculties</a>
             <span className="crumbs__sep">/</span>
             <span className="crumbs__here">{data.title}</span>
           </nav>
@@ -118,7 +143,7 @@ function FacultyHubLayout({ facultyKey, onNav, onCta }) {
           }}>{data.subtitle}</p>
           <div style={{ display: "flex", gap: 10, marginTop: 28 }}>
             <Button variant="primary" iconAfter="arrow_forward" onClick={() => routeGo("programs")}>View all programs</Button>
-            <Button variant="secondary" onClick={() => routeGo("admissions")}>Admissions</Button>
+            <Button variant="secondary" onClick={() => window.dispatchEvent(new CustomEvent("kse:apply"))}>Admissions</Button>
           </div>
         </div>
       </section>
@@ -143,7 +168,8 @@ function FacultyHubLayout({ facultyKey, onNav, onCta }) {
             overflow: "hidden",
           }}>
             {data.programs.map((p, i) => (
-              <a key={i} href={p.href} target="_blank" rel="noopener noreferrer"
+              <a key={i} href={"#/programs/p/" + p.slug}
+                onClick={e => { e.preventDefault(); routeGo("programs/p/" + p.slug); }}
                 style={{
                   display: "flex", alignItems: "center", gap: 16, padding: "18px 24px",
                   borderBottom: i < data.programs.length - 1 ? "1px solid var(--kse-border-soft)" : "none",
@@ -156,15 +182,20 @@ function FacultyHubLayout({ facultyKey, onNav, onCta }) {
                   flex: 1, fontFamily: "var(--kse-font-sans)", fontSize: 17,
                   fontWeight: 500, letterSpacing: "-0.01em", color: "var(--kse-title-light)",
                 }}>{p.name}</span>
-                <Icon name="arrow_outward" size={16} style={{ color: "var(--kse-secondary)", flexShrink: 0 }} />
+                <Icon name="arrow_forward" size={16} style={{ color: "var(--kse-secondary)", flexShrink: 0 }} />
               </a>
             ))}
           </div>
         </div>
       </section>
 
-      {/* ── FACULTY TEAM (stub) ──────────────────────────────── */}
-      <StubSection title="Faculty Team" icon="group" />
+      {/* ── FACULTY TEAM ─────────────────────────────────────── */}
+      {(() => {
+        const staff = (typeof peopleByFaculty === "function") ? peopleByFaculty(data.title) : [];
+        return staff.length
+          ? <FacultyStaffSection staff={staff} />
+          : <StubSection title="Faculty Team" icon="group" />;
+      })()}
 
       {/* ── RESEARCH CENTERS (stub) ─────────────────────────── */}
       <StubSection title="Research Centers" icon="science" />
@@ -179,7 +210,7 @@ function FacultyHubLayout({ facultyKey, onNav, onCta }) {
           </div>
           <div style={{ display: "flex", gap: 10 }}>
             <Button variant="primary" iconAfter="arrow_forward" onClick={() => routeGo("programs")}>View all programs</Button>
-            <Button variant="secondary" onClick={() => routeGo("admissions")}>Apply</Button>
+            <Button variant="secondary" onClick={() => window.dispatchEvent(new CustomEvent("kse:apply"))}>Apply</Button>
           </div>
         </div>
       </section>

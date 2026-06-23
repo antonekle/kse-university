@@ -1,6 +1,28 @@
 /* KSE University page — section helpers (pairs with kit.css + ../../colors_and_type.css) */
 
-/* Numbered section header: "02 — Faculties & Schools           All faculties →" */
+/* Programs: single column by default, 2 columns on big screens */
+.programs-grid{display:grid;grid-template-columns:1fr;gap:16px;}
+@media (min-width:880px){.programs-grid{grid-template-columns:repeat(2,1fr);}}
+
+/* Faculty directory (/people) */
+.people-grid{display:grid;grid-template-columns:1fr;gap:30px 24px;}
+@media (min-width:560px){.people-grid{grid-template-columns:repeat(2,1fr);}}
+@media (min-width:820px){.people-grid{grid-template-columns:repeat(3,1fr);}}
+@media (min-width:1100px){.people-grid{grid-template-columns:repeat(4,1fr);}}
+.pcard__name{display:inline-flex;align-items:center;gap:5px;font-family:var(--kse-font-sans);
+  font-weight:600;font-size:17px;letter-spacing:-0.01em;color:var(--kse-title-light);margin-top:14px;}
+.pcard__name:hover{text-decoration:underline;}
+.pcard__role{font-family:var(--kse-font-ui);font-size:13px;line-height:1.55;
+  color:var(--kse-desc-light);margin-top:7px;}
+.pfilter{display:flex;flex-wrap:wrap;gap:8px;}
+
+/* Faculty profile (/people/{slug}) */
+.person-layout{display:grid;grid-template-columns:1fr;gap:32px;align-items:start;}
+@media (min-width:760px){.person-layout{grid-template-columns:300px 1fr;gap:56px;}}
+.person-bio{font-family:var(--kse-font-sans);font-size:17px;line-height:1.75;
+  color:var(--kse-title-light);max-width:64ch;margin:0;}
+
+/* Numbered section header: "02 — Faculties           All faculties →" */
 .usec{padding:88px 0;border-top:1px solid var(--kse-border-soft);}
 .usec--wash{background:var(--kse-bg-light-2);}
 .usec__head{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;margin-bottom:40px;}

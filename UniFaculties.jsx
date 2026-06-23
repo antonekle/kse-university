@@ -1,11 +1,10 @@
 // KSE University — Faculties as editorial list rows (was a 6-card grid)
 const FACULTIES = [
-  { name: "Engineering School", degrees: ["BA", "MA", "PhD"], desc: "Engineering, data science, applied mathematics" },
-  { name: "Economics & Business", degrees: ["BA", "MA", "PhD"], desc: "Economic theory and policy" },
-  { name: "Sociology", degrees: ["BA", "MA"], desc: "Public policy, behavioral sciences" },
+  { name: "Engineering School", degrees: ["BA", "MA", "PhD"], desc: "Engineering, applied mathematics, defense systems" },
+  { name: "Computer Technologies", degrees: ["BA", "MA"], desc: "Software, cybersecurity, intelligent systems" },
   { name: "Mathematics", degrees: ["BA", "MA", "PhD"], desc: "Pure and applied mathematics" },
-  { name: "Cybersecurity", degrees: ["BA", "MA", "Short"], desc: "Systems defense, AI security" },
-  { name: "Delta Engineering", degrees: ["MA", "Short"], desc: "Defense engineering, dual-use" },
+  { name: "Social Sciences", degrees: ["BA", "MA"], desc: "Sociology, public policy, behavioral sciences" },
+  { name: "Economics", degrees: ["BA", "MA", "PhD"], desc: "Economic theory, data, business, and finance" },
 ];
 function UniFaculties({ onNav, onConsult }) {
   return (
@@ -14,7 +13,7 @@ function UniFaculties({ onNav, onConsult }) {
         <div className="usec__head">
           <div>
             <span className="usec__num">04</span>
-            <h2 className="usec__title">Faculties &amp; schools</h2>
+            <h2 className="usec__title">Faculties</h2>
           </div>
           <a href="#" className="usec__link" onClick={(e) => { e.preventDefault(); onNav("Faculties"); }}>
             All faculties <Icon name="arrow_forward" size={18} />

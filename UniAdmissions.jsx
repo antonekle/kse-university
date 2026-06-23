@@ -1,7 +1,7 @@
 // KSE University — Admissions & programs (the approved block), KSE-styled
 const PROGRAMS = [
   { lvl: "Bachelor",     meta: "4 years · foundation",        route: "programs/bachelor" },
-  { lvl: "Master",       meta: "1.5 years · specialization",  route: "programs/master" },
+  { lvl: "Master",       meta: "14-22 months · specialization",  route: "programs/master" },
   { lvl: "PhD",          meta: "Doctoral research programs",   route: "programs/phd" },
   { lvl: "Short Courses",meta: "For professionals",            route: "programs/short-courses" },
 ];
@@ -48,14 +48,39 @@ function UniAdmissions({ onNav, onConsult }) {
             </div>
           ))}
         </div>
-        <div style={{ marginTop: 0, background: "var(--kse-accent-band)", borderRadius: 16, padding: "30px 36px",
+        <div style={{ display: "grid", gridTemplateColumns: "1fr 1.1fr", gap: 48, alignItems: "center",
+          margin: "20px 0", border: "1px solid var(--kse-border)", borderRadius: 16,
+          padding: "32px 36px", background: "#fff" }}>
+          <div>
+            <div style={{ fontFamily: "var(--kse-font-ui)", fontSize: 11, fontWeight: 700,
+              letterSpacing: ".13em", textTransform: "uppercase", color: "var(--kse-secondary)", marginBottom: 10 }}>Mobility</div>
+            <h3 style={{ fontFamily: "var(--kse-font-sans)", fontWeight: 500, fontSize: 28,
+              letterSpacing: "-0.025em", margin: "0 0 4px", color: "var(--kse-title-light)" }}>
+              Academic Mobility
+            </h3>
+            <div style={{ fontFamily: "var(--kse-font-sans)", fontWeight: 500,
+              fontSize: 64, letterSpacing: "-0.05em", color: "var(--kse-title-light)", lineHeight: 1, margin: "8px 0 14px" }}>
+              100+
+            </div>
+            <p className="lead" style={{ fontSize: 15, margin: "0 0 24px", maxWidth: "38ch" }}>
+              KSE students study at top universities in Europe and the US every year — exchanges, dual degrees, summer schools.
+            </p>
+            <Button variant="secondary" iconAfter="arrow_forward" onClick={() => routeGo("mobility")}>
+              Explore Mobility
+            </Button>
+          </div>
+          <div className="imgph" style={{ height: 260, borderRadius: 10 }}>
+            <span className="imgph__lbl">Students abroad</span>
+          </div>
+        </div>
+        {false && <div style={{ marginTop: 20, background: "var(--kse-accent-band)", borderRadius: 16, padding: "30px 36px",
           display: "flex", alignItems: "center", justifyContent: "space-between", gap: 24, flexWrap: "wrap" }}>
           <div>
             <div style={{ color: "#fff", fontSize: 24, fontWeight: 500, letterSpacing: "-0.02em" }}>Not sure where to start?</div>
-            <div style={{ color: "var(--kse-desc-dark)", fontSize: 15, marginTop: 6 }}>Tell us about your goals — we'll help you find the right program.</div>
+            <div style={{ color: "rgba(255,255,255,0.65)", fontSize: 15, marginTop: 6 }}>Tell us about your goals — we'll help you find the right program.</div>
           </div>
           <Button variant="light" icon="chat_bubble" onClick={onConsult}>Get a consultation</Button>
-        </div>
+        </div>}
       </div>
     </section>
   );

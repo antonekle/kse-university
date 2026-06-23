@@ -1,8 +1,8 @@
 // KSE University — Life at KSE (community links + campus image band)
 const COMMUNITY = [
-  { t: "Clubs & initiatives", s: "Student organizations" },
-  { t: "Student support", s: "Psychological, academic, financial" },
-  { t: "Alumni", s: "Alumni community · student stories" },
+  // { t: "Clubs & initiatives", s: "Student organizations" },
+  // { t: "Student support", s: "Psychological, academic, financial" },
+  // { t: "Alumni", s: "Alumni community · student stories" },
 ];
 const CAMPUS_IMGS = ["Campus", "Auditorium", "Student space", "Events"];
 function UniLife({ onNav }) {
@@ -14,9 +14,6 @@ function UniLife({ onNav }) {
             <span className="usec__num">04</span>
             <h2 className="usec__title">Campus life</h2>
           </div>
-          <a href="#" className="usec__link" onClick={(e) => { e.preventDefault(); onNav("Community"); }}>
-            Community <Icon name="arrow_forward" size={18} />
-          </a>
         </div>
         <div style={{ display: "grid", gridTemplateColumns: "1fr 1.1fr", gap: 56, alignItems: "start" }}>
           <div>
@@ -34,10 +31,10 @@ function UniLife({ onNav }) {
                 </div>
               ))}
             </div>
-            <div className="qlinks" style={{ marginTop: 28 }}>
-              <span className="qlink" onClick={() => onNav("Visit Campus")}>Visit campus</span>
-              <span className="qlink" onClick={() => onNav("Open Days")}>Open days</span>
-              <span className="qlink" onClick={() => onNav("Directions")}>How to get here</span>
+            <div style={{ display: "flex", gap: 10, marginTop: 28 }}>
+              <Button variant="primary" iconAfter="arrow_forward" onClick={() => onNav("Community")}>Community</Button>
+              <Button variant="secondary" onClick={() => onNav("Visit Campus")}>Visit campus</Button>
+              <Button variant="secondary" onClick={() => onNav("Open Days")}>Open days</Button>
             </div>
           </div>
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gridTemplateRows: "180px 180px", gap: 14 }}>

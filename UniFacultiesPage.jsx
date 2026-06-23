@@ -145,7 +145,7 @@ function UniFacultiesPage({ onNav, onCta }) {
           <nav className="crumbs" style={{ paddingTop: 28 }}>
             <a href="#" className="crumbs__link" onClick={(e) => { e.preventDefault(); routeGo(""); }}>Home</a>
             <span className="crumbs__sep">/</span>
-            <span className="crumbs__here">Faculties &amp; Schools</span>
+            <span className="crumbs__here">Faculties</span>
           </nav>
           <span className="tag tag--soft" style={{ marginTop: 24, display: "inline-block" }}>Academic Structure</span>
           <h1 style={{
@@ -162,7 +162,7 @@ function UniFacultiesPage({ onNav, onCta }) {
           </p>
           <div style={{ display: "flex", gap: 10, marginTop: 28 }}>
             <Button variant="primary" iconAfter="arrow_forward" onClick={() => routeGo("programs")}>Browse programs</Button>
-            <Button variant="secondary" onClick={() => routeGo("admissions")}>Admissions</Button>
+            <Button variant="secondary" onClick={() => window.dispatchEvent(new CustomEvent("kse:apply"))}>Admissions</Button>
           </div>
         </div>
       </section>
@@ -170,16 +170,6 @@ function UniFacultiesPage({ onNav, onCta }) {
       {/* ── FACULTY CARDS ────────────────────────────────────────── */}
       <section className="usec">
         <div className="kse-shell">
-          <div className="usec__head" style={{ marginBottom: 32 }}>
-            <div>
-              <div style={{
-                fontFamily: "var(--kse-font-ui)", fontSize: 11, fontWeight: 700,
-                letterSpacing: ".13em", textTransform: "uppercase",
-                color: "var(--kse-secondary)", marginBottom: 10,
-              }}>Five faculties</div>
-              <h2 className="usec__title">Academic Units</h2>
-            </div>
-          </div>
           <div style={{
             display: "grid",
             gridTemplateColumns: "repeat(2, 1fr)",
@@ -216,7 +206,7 @@ function UniFacultiesPage({ onNav, onCta }) {
               onMouseLeave={e => e.currentTarget.style.opacity = "1"}>
               Browse programs <Icon name="arrow_forward" size={18} style={{ color: "var(--kse-accent)" }} />
             </button>
-            <button onClick={() => onNav("Contacts")}
+            <button onClick={() => onNav("Contact Us")}
               style={{
                 fontFamily: "var(--kse-font-ui)", fontWeight: 600, fontSize: 15,
                 padding: "13px 26px", borderRadius: 8, cursor: "pointer",

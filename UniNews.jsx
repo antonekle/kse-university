@@ -18,13 +18,10 @@ function UniNews({ onNav }) {
             <span className="usec__num">05</span>
             <h2 className="usec__title">News &amp; events</h2>
           </div>
-          <a href="#" className="usec__link" onClick={(e) => { e.preventDefault(); onNav("News"); }}>
-            All news <Icon name="arrow_forward" size={18} />
-          </a>
         </div>
 
         {/* ── News cards ─────────────────────────────────────── */}
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 16, marginBottom: 48 }}>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 16, marginBottom: 18 }}>
           {UNI_NEWS.map(n => (
             <div key={n.t} onClick={() => onNav("News")}
               style={{ background: "#fff", border: "1px solid var(--kse-border-soft)",
@@ -44,6 +41,9 @@ function UniNews({ onNav }) {
               </div>
             </div>
           ))}
+        </div>
+        <div style={{ marginBottom: 40 }}>
+          <Button variant="secondary" size="sm" iconAfter="arrow_forward" onClick={() => onNav("News")}>All news</Button>
         </div>
 
         {/* ── Events list ────────────────────────────────────── */}

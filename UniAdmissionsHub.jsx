@@ -300,7 +300,7 @@ function UniAdmissionsHub({ onNav, onCta }) {
               onMouseLeave={e => e.currentTarget.style.opacity = "1"}>
               Apply now <Icon name="arrow_forward" size={18} style={{ color: "var(--kse-accent)" }} />
             </button>
-            <button onClick={() => onNav("Contacts")}
+            <button onClick={() => onNav("Contact Us")}
               style={{ fontFamily: "var(--kse-font-ui)", fontWeight: 600, fontSize: 15,
                 padding: "14px 28px", borderRadius: 8, cursor: "pointer",
                 background: "transparent", color: "#fff",
@@ -308,7 +308,7 @@ function UniAdmissionsHub({ onNav, onCta }) {
                 display: "inline-flex", alignItems: "center", gap: 8, transition: ".15s" }}
               onMouseEnter={e => e.currentTarget.style.borderColor = "rgba(255,255,255,0.7)"}
               onMouseLeave={e => e.currentTarget.style.borderColor = "rgba(255,255,255,0.32)"}>
-              Admissions office contacts <Icon name="arrow_forward" size={18} />
+              Contact admissions <Icon name="arrow_forward" size={18} style={{ color: "var(--kse-accent)" }} />
             </button>
             <button onClick={() => onNav("Events")}
               style={{ fontFamily: "var(--kse-font-ui)", fontWeight: 600, fontSize: 15,
@@ -324,6 +324,7 @@ function UniAdmissionsHub({ onNav, onCta }) {
         </div>
       </section>
 
+      <UniConsultBanner />
       <UniFooter onNav={onNav} />
     </div>
   );

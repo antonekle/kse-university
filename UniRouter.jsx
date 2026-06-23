@@ -5,7 +5,7 @@
 const ROUTES = {
   "about":        { title: "About the University", desc: "Mission, history, and leadership of KSE University.", nav: "About", renderFull: (onNav, onCta) => React.createElement(UniAboutPage, { onNav, onCta }) },
 
-  "programs":                 { title: "Academic Programs", desc: "Bachelor, master, doctoral, and short programs across every faculty.", nav: "Programs", renderBody: (onNav) => React.createElement(UniPrograms, { onNav, hideHeader: true, noshell: true }) },
+  "programs":                 { title: "Academic Programs", desc: "Bachelor, master, doctoral, and short programs across every faculty.", nav: "Programs", renderFull: (onNav, onCta) => React.createElement(UniAcademicProgramsPage, { onNav, onCta }) },
   "programs/bachelor":        { title: "Bachelor Programs", desc: "Undergraduate degrees and entry pathways.", nav: "Programs", renderFull: (onNav, onCta) => React.createElement(UniBachelorPage, { onNav, onCta }) },
   "programs/master":          { title: "Master Programs", desc: "Graduate degrees and specialized tracks.", nav: "Programs", renderFull: (onNav, onCta) => React.createElement(UniMasterPage, { onNav, onCta }) },
   "programs/phd":             { title: "PhD Programs", desc: "Doctoral research and supervision.", nav: "Programs", renderFull: (onNav, onCta) => React.createElement(UniPhdPage, { onNav, onCta }) },
@@ -13,8 +13,8 @@ const ROUTES = {
 
   "admissions":   { title: "Admissions", desc: "How to apply, deadlines, and entry requirements.", nav: "Admissions", renderFull: (onNav, onCta) => React.createElement(UniAdmissionsHub, { onNav, onCta }) },
 
-  "faculties":                      { title: "Faculties & Schools", desc: "The schools and departments that make up the University.", nav: "Faculties", renderFull: (onNav, onCta) => React.createElement(UniFacultiesPage, { onNav, onCta }) },
-  "faculties/engineering":          { title: "School of Engineering", desc: "Engineering, data science, and applied mathematics.", nav: "Faculties", renderFull: (onNav, onCta) => React.createElement(UniFacultyEngineering, { onNav, onCta }) },
+  "faculties":                      { title: "Faculties", desc: "The faculties and departments that make up the University.", nav: "Faculties", renderFull: (onNav, onCta) => React.createElement(UniFacultiesPage, { onNav, onCta }) },
+  "faculties/engineering":          { title: "Engineering School", desc: "Engineering, data science, and applied mathematics.", nav: "Faculties", renderFull: (onNav, onCta) => React.createElement(UniFacultyEngineering, { onNav, onCta }) },
   "faculties/computer-technologies": { title: "Computer Technologies", desc: "Software, cybersecurity, and intelligent systems.", nav: "Faculties", renderFull: (onNav, onCta) => React.createElement(UniFacultyComputerTech, { onNav, onCta }) },
   "faculties/mathematics":           { title: "Mathematics", desc: "Pure and applied mathematics.", nav: "Faculties", renderFull: (onNav, onCta) => React.createElement(UniFacultyMathematics, { onNav, onCta }) },
   "faculties/social-sciences":       { title: "Social Sciences", desc: "Psychology, sociology, public policy, and urban studies.", nav: "Faculties", renderFull: (onNav, onCta) => React.createElement(UniFacultySocialSciences, { onNav, onCta }) },
@@ -25,14 +25,14 @@ const ROUTES = {
   "grants-aid":   { title: "Grants & Financial Aid", desc: "Merit grants, need-based support, external scholarships and state-funded places.", nav: "Grants & Aid", renderFull: (onNav, onCta) => React.createElement(UniGrantsAid, { onNav, onCta }) },
 
   "campus":       { title: "Campus & Visit", desc: "Visit the campus in Kyiv and plan your trip.", nav: null },
-  "news":         { title: "News & Events", desc: "Latest announcements and stories from the University.", nav: null },
-  "events":       { title: "Events", desc: "Lectures, conferences, and open days.", nav: null },
+  "news":         { title: "News & Events", desc: "Latest announcements and stories from the University.", nav: null, renderFull: (onNav, onCta) => React.createElement(UniNewsPage, { onNav, onCta }) },
+  "events":       { title: "Events", desc: "Lectures, conferences, and open days.", nav: null, renderFull: (onNav, onCta) => React.createElement(UniEventsPage, { onNav, onCta }) },
   "resources":    { title: "Student Resources", desc: "Tools, portals, and support for students.", nav: null },
-  "people":       { title: "Faculty & Researchers", desc: "Faculty members and researchers across the University.", nav: null },
-  "documents":    { title: "Documents", desc: "Official forms, policies, and downloads.", nav: null },
-  "contacts":     { title: "Contacts", desc: "Get in touch with offices and departments.", nav: null },
-  "publications":  { title: "Publications", desc: "Academic papers, reports and research output by faculty and researchers.", nav: "Research" },
-  "mobility":      { title: "Student Mobility & Exchanges", desc: "International exchange programs, partnerships and mobility opportunities.", nav: null },
+  "people":       { title: "Faculty", desc: "Faculty members and researchers across the University.", nav: null, renderFull: (onNav, onCta) => React.createElement(UniPeoplePage, { onNav, onCta }) },
+  "documents":    { title: "Documents", desc: "Official forms, policies, and downloads.", nav: null, renderFull: (onNav, onCta) => React.createElement(UniDocumentsPage, { onNav, onCta }) },
+  "careers":      { title: "Open Positions", desc: "Academic and research vacancies at KSE University.", nav: null, renderFull: (onNav, onCta) => React.createElement(UniCareersPage, { onNav, onCta }) },
+  "contacts":     { title: "Contact Us", desc: "Get in touch with offices and departments.", nav: null, renderFull: (onNav, onCta) => React.createElement(UniContactsPage, { onNav, onCta }) },
+  "mobility":      { title: "Student Mobility & Exchanges", desc: "International exchange programs, partnerships and mobility opportunities.", nav: null, renderFull: (onNav, onCta) => React.createElement(UniMobilityPage, { onNav, onCta }) },
 };
 
 // Homepage labels (onNav("…")) -> route path, so existing section links route correctly.
@@ -48,8 +48,9 @@ const LABEL_TO_ROUTE = {
   "Campus": "campus",
   "Visit Campus": "campus",
   "Apply": "admissions",
-  "Contact": "contacts",
-  "Contacts": "contacts",
+  "Contact Us": "contacts",
+  "Contact":    "contacts",
+  "Contacts":   "contacts",
   "Campus": "campus",
   "Programs": "programs",
   "Resources": "resources",
@@ -58,12 +59,11 @@ const LABEL_TO_ROUTE = {
   "Documents": "documents",
   "People": "people",
   // Faculty rows on the homepage
-  "Engineering School": "faculties/engineering-school",
-  "Economics & Business": "faculties/economics",
-  "Sociology": "faculties/sociology",
+  "Engineering School": "faculties/engineering",
+  "Computer Technologies": "faculties/computer-technologies",
   "Mathematics": "faculties/mathematics",
-  "Cybersecurity": "faculties/cybersecurity",
-  "Delta Engineering": "faculties/delta-engineering",
+  "Social Sciences": "faculties/social-sciences",
+  "Economics": "faculties/economics",
   // Life section chips
   "Open Days": "events",
   "Open days": "events",

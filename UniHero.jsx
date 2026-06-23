@@ -1,10 +1,10 @@
 // KSE University — hero (full-bleed placeholder image, overlay content at bottom-left, white quick-nav bar)
 function UniHero({ onNav, onCta }) {
   const quick = [
-    { label: "Engineering School",   to: "faculties/engineering-school" },
+    { label: "Engineering School",   to: "faculties/engineering" },
     { label: "Computer Technologies", to: "faculties/computer-technologies" },
     { label: "Mathematics",           to: "faculties/mathematics" },
-    { label: "Social Sciences",       to: "faculties/sociology" },
+    { label: "Social Sciences",       to: "faculties/social-sciences" },
     { label: "Economics",             to: "faculties/economics" },
   ];
 
@@ -73,7 +73,7 @@ function UniHero({ onNav, onCta }) {
             </a>
           </p>
           <div style={{ display: "flex", gap: 10, marginTop: 24 }}>
-            <Button variant="accent" onClick={() => onCta("Apply")}>Apply</Button>
+            <Button variant="accent" onClick={() => routeGo("admissions")}>Admission</Button>
             <Button variant="secondary" onClick={() => onNav("Research")}>Research</Button>
             <Button variant="secondary" onClick={() => onNav("Community")}>Campus life</Button>
           </div>

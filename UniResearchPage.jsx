@@ -6,9 +6,9 @@ const RESEARCH_TAGS = [
 
 const CENTERS = [
   { name: "AI Lab",                      faculty: "Engineering School",        desc: "Applied artificial intelligence, machine learning systems and defense AI." },
-  { name: "Macroeconomic Research Center",faculty: "Economics & Business",      desc: "Policy-relevant macroeconomic modeling and national economic analysis." },
-  { name: "Public Policy Lab",           faculty: "Sociology",                 desc: "Governance research, behavioral economics and post-war reconstruction." },
-  { name: "Delta Engineering Lab",       faculty: "Delta Engineering",         desc: "Dual-use engineering research; UAV systems and applied defense technologies." },
+  { name: "Macroeconomic Research Center",faculty: "Economics",      desc: "Policy-relevant macroeconomic modeling and national economic analysis." },
+  { name: "Public Policy Lab",           faculty: "Social Sciences",                 desc: "Governance research, behavioral economics and post-war reconstruction." },
+  { name: "Delta Engineering Lab",       faculty: "Engineering School",         desc: "Dual-use engineering research; UAV systems and applied defense technologies." },
 ];
 
 const PROJECTS = [
@@ -25,10 +25,10 @@ const CONFERENCES = [
 ];
 
 const RESEARCHERS = [
-  { n: "O. Petrenko",  r: "Dean, Engineering School", route: "faculties/engineering-school" },
+  { n: "O. Petrenko",  r: "Dean, Engineering School", route: "faculties/engineering" },
   { n: "M. Kovalenko", r: "Professor of Economics",   route: "faculties/economics" },
-  { n: "V. Honcharuk", r: "Cybersecurity Lead",       route: "faculties/cybersecurity" },
-  { n: "T. Bondar",    r: "Lab Director",             route: "faculties/delta-engineering" },
+  { n: "V. Honcharuk", r: "Cybersecurity Lead",       route: "faculties/computer-technologies" },
+  { n: "T. Bondar",    r: "Lab Director",             route: "faculties/engineering" },
 ];
 
 function UniResearchPage({ onNav, onCta }) {

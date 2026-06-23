@@ -10,16 +10,16 @@ const PROGRAMS_DATA = {
     tag: "Programs · Bachelor",
     applyLabel: "Apply for Bachelor",
     cards: [
-      { school: "Economics & Business", name: "Business Economics",
+      { faculty: "Economics", name: "Business Economics",
         desc: "Foundation of economic theory and business decision-making.",
         language: "Ukrainian / English", duration: "4 years", format: "On-campus", slug: "business-economics" },
-      { school: "School of Engineering", name: "Computer Science",
+      { faculty: "Computer Technologies", name: "Computer Science",
         desc: "Programming, algorithms, data structures and software engineering.",
         language: "English", duration: "4 years", format: "On-campus", slug: "computer-science" },
-      { school: "Sociology & Social Sciences", name: "Sociology",
+      { faculty: "Social Sciences", name: "Sociology",
         desc: "Study of society, behavioral and quantitative methods.",
         language: "Ukrainian", duration: "4 years", format: "On-campus", slug: "sociology" },
-      { school: "Mathematics", name: "Applied Mathematics",
+      { faculty: "Mathematics", name: "Applied Mathematics",
         desc: "Mathematical modeling of real-world systems.",
         language: "Ukrainian", duration: "4 years", format: "On-campus", slug: "applied-mathematics" },
     ],
@@ -31,16 +31,16 @@ const PROGRAMS_DATA = {
     tag: "Programs · Master",
     applyLabel: "Apply for Master",
     cards: [
-      { school: "Economics & Business", name: "Economic Analysis",
+      { faculty: "Economics", name: "Economic Analysis",
         desc: "Advanced quantitative methods and economic research.",
         language: "English", duration: "1.5 years", format: "On-campus", slug: "economic-analysis" },
-      { school: "School of Engineering", name: "Software Engineering",
+      { faculty: "Computer Technologies", name: "Software Engineering",
         desc: "Applied software systems, architecture and product development.",
         language: "English", duration: "1.5 years", format: "On-campus", slug: "software-engineering" },
-      { school: "Public Policy", name: "Public Policy & Governance",
+      { faculty: "Social Sciences", name: "Public Policy & Governance",
         desc: "Policy design, institutional analysis and public administration.",
         language: "Ukrainian / English", duration: "1.5 years", format: "On-campus", slug: "public-policy" },
-      { school: "Data Science", name: "Data Science & AI",
+      { faculty: "Computer Technologies", name: "Data Science & AI",
         desc: "Machine learning, statistics and applied data systems.",
         language: "English", duration: "1.5 years", format: "Hybrid", slug: "data-science-ai" },
     ],
@@ -52,13 +52,13 @@ const PROGRAMS_DATA = {
     tag: "Programs · PhD",
     applyLabel: "Apply for PhD",
     cards: [
-      { school: "Economics", name: "PhD in Economics",
+      { faculty: "Economics", name: "PhD in Economics",
         desc: "Independent research supervised by leading scholars.",
         language: "English", duration: "4 years", format: "On-campus", slug: "phd-economics" },
-      { school: "Mathematics", name: "PhD in Mathematics",
+      { faculty: "Mathematics", name: "PhD in Mathematics",
         desc: "Research in pure and applied mathematics.",
         language: "English", duration: "4 years", format: "On-campus", slug: "phd-mathematics" },
-      { school: "Sociology & Social Sciences", name: "PhD in Sociology",
+      { faculty: "Social Sciences", name: "PhD in Sociology",
         desc: "Empirical research on society.",
         language: "Ukrainian / English", duration: "4 years", format: "On-campus", slug: "phd-sociology" },
     ],
@@ -70,16 +70,16 @@ const PROGRAMS_DATA = {
     tag: "Programs · Short Courses",
     applyLabel: "Apply for Short Courses",
     cards: [
-      { school: "Professional Development", name: "Data Analysis for Decision-Makers",
+      { faculty: "Computer Technologies", name: "Data Analysis for Decision-Makers",
         desc: "Applied statistics and data interpretation for managers.",
         language: "English", duration: "6 weeks", format: "Hybrid", slug: "data-analysis" },
-      { school: "Professional Development", name: "Public Policy Fundamentals",
+      { faculty: "Social Sciences", name: "Public Policy Fundamentals",
         desc: "Key tools for policy analysis and institutional design.",
         language: "Ukrainian", duration: "4 weeks", format: "On-campus", slug: "public-policy-fundamentals" },
-      { school: "Professional Development", name: "AI & Business Strategy",
+      { faculty: "Computer Technologies", name: "AI & Business Strategy",
         desc: "Practical AI literacy for business leaders.",
         language: "English", duration: "8 weeks", format: "Hybrid", slug: "ai-business-strategy" },
-      { school: "Professional Development", name: "Financial Modeling",
+      { faculty: "Economics", name: "Financial Modeling",
         desc: "Excel-based modeling, valuation and scenario analysis.",
         language: "Ukrainian / English", duration: "5 weeks", format: "On-campus", slug: "financial-modeling" },
     ],
@@ -103,7 +103,7 @@ const PHD_RESEARCH_AREAS = [
 ];
 
 const PHD_SUPERVISORS = [
-  { name: "O. Petrenko",   title: "Dean, School of Engineering",  tags: ["AI", "Software Engineering"],  slug: "petrenko" },
+  { name: "O. Petrenko",   title: "Dean, Engineering School",  tags: ["AI", "Software Engineering"],  slug: "petrenko" },
   { name: "M. Kovalenko",  title: "Professor of Economics",        tags: ["Macroeconomics", "Policy"],    slug: "kovalenko" },
   { name: "I. Shevchuk",   title: "Associate Professor",           tags: ["Sociology", "Methods"],        slug: "shevchuk" },
   { name: "T. Bondar",     title: "Lab Director",                  tags: ["Topology", "Analysis"],        slug: "bondar" },
@@ -111,14 +111,14 @@ const PHD_SUPERVISORS = [
 
 /* ═══════════════════════ HELPERS ═══════════════════════════════════════ */
 
-function groupBySchool(cards) {
+function groupByFaculty(cards) {
   const groups = {};
   const order = [];
   cards.forEach(c => {
-    if (!groups[c.school]) { groups[c.school] = []; order.push(c.school); }
-    groups[c.school].push(c);
+    if (!groups[c.faculty]) { groups[c.faculty] = []; order.push(c.faculty); }
+    groups[c.faculty].push(c);
   });
-  return order.map(s => ({ school: s, cards: groups[s] }));
+  return order.map(f => ({ faculty: f, cards: groups[f] }));
 }
 
 /* ═══════════════════════ FILTER BAR ════════════════════════════════════ */
@@ -146,15 +146,15 @@ function PillGroup({ label, options, value, onChange }) {
 }
 
 function FilterBar() {
-  const [school, setSchool] = React.useState("All");
+  const [faculty, setFaculty] = React.useState("All");
   const [lang,   setLang]   = React.useState("All");
   const [fmt,    setFmt]    = React.useState("All");
   return (
     <div style={{ display: "flex", alignItems: "center", gap: 24, flexWrap: "wrap",
       padding: "18px 0", borderBottom: "1px solid var(--kse-border-soft)" }}>
-      <PillGroup label="School"
-        options={["All", "Engineering", "Economics", "Sociology", "Mathematics", "Cybersecurity", "Delta"]}
-        value={school} onChange={setSchool} />
+      <PillGroup label="Faculty"
+        options={["All", "Engineering School", "Computer Technologies", "Mathematics", "Social Sciences", "Economics"]}
+        value={faculty} onChange={setFaculty} />
       <div style={{ width: 1, height: 20, background: "var(--kse-border)", flexShrink: 0 }} />
       <PillGroup label="Language" options={["All", "UA", "EN"]} value={lang} onChange={setLang} />
       <div style={{ width: 1, height: 20, background: "var(--kse-border)", flexShrink: 0 }} />
@@ -175,6 +175,10 @@ function ProgramCard({ card, levelKey }) {
       transition: "box-shadow .18s, transform .18s" }}
       onMouseEnter={e => { e.currentTarget.style.boxShadow = "var(--kse-shadow-md)"; e.currentTarget.style.transform = "translateY(-2px)"; }}
       onMouseLeave={e => { e.currentTarget.style.boxShadow = "none"; e.currentTarget.style.transform = "none"; }}>
+
+      <div style={{ fontFamily: "var(--kse-font-ui)", fontSize: 11, fontWeight: 700,
+        letterSpacing: ".1em", textTransform: "uppercase", color: "var(--kse-secondary)",
+        marginBottom: 12 }}>{card.faculty}</div>
 
       <h3 style={{ fontFamily: "var(--kse-font-sans)", fontWeight: 500, fontSize: 20,
         letterSpacing: "-0.015em", margin: "0 0 10px", color: "var(--kse-title-light)" }}>{card.name}</h3>
@@ -201,7 +205,7 @@ function ProgramCard({ card, levelKey }) {
       </div>
 
       <div style={{ display: "flex", gap: 8 }}>
-        <button onClick={() => routeGo("programs/" + levelKey + "/" + card.slug)}
+        <button onClick={() => routeGo("programs/p/" + card.slug)}
           style={{ fontFamily: "var(--kse-font-ui)", fontSize: 13, fontWeight: 600,
             padding: "9px 14px", borderRadius: 8, cursor: "pointer", flex: 1,
             background: "transparent", color: "var(--kse-title-light)",
@@ -212,7 +216,7 @@ function ProgramCard({ card, levelKey }) {
           onMouseLeave={e => e.currentTarget.style.borderColor = "var(--kse-border)"}>
           View Program <Icon name="arrow_forward" size={14} />
         </button>
-        <button onClick={() => routeGo("admissions")}
+        <button onClick={() => window.dispatchEvent(new CustomEvent("kse:apply"))}
           style={{ fontFamily: "var(--kse-font-ui)", fontSize: 13, fontWeight: 600,
             padding: "9px 18px", borderRadius: 8, cursor: "pointer",
             background: "var(--kse-accent)", color: "#fff", border: "none", transition: ".15s" }}
@@ -228,21 +232,9 @@ function ProgramCard({ card, levelKey }) {
 /* ═══════════════════════ PROGRAMS GRID ═════════════════════════════════ */
 
 function ProgramsGrid({ cards, levelKey }) {
-  const groups = groupBySchool(cards);
   return (
-    <div style={{ display: "flex", flexDirection: "column", gap: 40 }}>
-      {groups.map(g => (
-        <div key={g.school}>
-          <div style={{ fontFamily: "var(--kse-font-ui)", fontSize: 11, fontWeight: 700,
-            letterSpacing: ".1em", textTransform: "uppercase", color: "var(--kse-secondary)",
-            marginBottom: 16, paddingBottom: 12, borderBottom: "1px solid var(--kse-border-soft)" }}>
-            {g.school}
-          </div>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(2,1fr)", gap: 16 }}>
-            {g.cards.map(c => <ProgramCard key={c.slug} card={c} levelKey={levelKey} />)}
-          </div>
-        </div>
-      ))}
+    <div className="programs-grid">
+      {cards.map(c => <ProgramCard key={c.slug} card={c} levelKey={levelKey} />)}
     </div>
   );
 }
@@ -457,7 +449,7 @@ function ProgramsLayout({ levelKey, onNav, onCta }) {
             {data.subtitle}
           </p>
           <div style={{ display: "flex", gap: 10, marginTop: 28 }}>
-            <Button variant="primary" iconAfter="arrow_forward" onClick={() => routeGo("admissions")}>
+            <Button variant="primary" iconAfter="arrow_forward" onClick={() => window.dispatchEvent(new CustomEvent("kse:apply"))}>
               {data.applyLabel}
             </Button>
             <Button variant="secondary" onClick={() => routeGo("events")}>Open Days</Button>
@@ -484,11 +476,15 @@ function ProgramsLayout({ levelKey, onNav, onCta }) {
         </div>
       </section>
 
+      {/* ── PARTNERS ──────────────────────────────────────────────── */}
+      <UniPartnersCarousel />
+
       {/* ── SECONDARY SECTION ──────────────────────────────────── */}
       {data.secondary === "events"    && <EventsBlock />}
       {data.secondary === "phd"       && <PhDSecondary />}
       {data.secondary === "corporate" && <CorporateTraining />}
 
+      <UniConsultBanner />
       <UniFooter onNav={onNav} />
     </div>
   );
@@ -509,4 +505,51 @@ function UniShortCoursesPage({ onNav, onCta }) {
   return <ProgramsLayout levelKey="short-courses" onNav={onNav} onCta={onCta} />;
 }
 
-Object.assign(window, { UniBachelorPage, UniMasterPage, UniPhdPage, UniShortCoursesPage });
+function UniAcademicProgramsPage({ onNav, onCta }) {
+  return (
+    <div>
+      <UniNav active="Programs" onNav={onNav} onCta={onCta} />
+
+      {/* ── HERO ──────────────────────────────────────────────── */}
+      <section style={{ background: "var(--kse-bg-light-2)", borderBottom: "1px solid var(--kse-border-soft)" }}>
+        <div className="kse-shell" style={{ paddingTop: 24, paddingBottom: 64 }}>
+          <nav className="crumbs" style={{ paddingTop: 28 }}>
+            <a href="#" className="crumbs__link" onClick={(e) => { e.preventDefault(); routeGo(""); }}>Home</a>
+            <span className="crumbs__sep">/</span>
+            <span className="crumbs__here">Academic Programs</span>
+          </nav>
+          <span className="tag tag--soft" style={{ marginTop: 24, display: "inline-block" }}>Programs</span>
+          <h1 style={{ fontFamily: "var(--kse-font-sans)", fontWeight: 500, letterSpacing: "-0.034em",
+            fontSize: 64, lineHeight: 1.04, margin: "18px 0 0", maxWidth: "18ch" }}>
+            Academic Programs
+          </h1>
+          <p style={{ fontSize: 20, color: "var(--kse-desc-light)", marginTop: 16,
+            maxWidth: "52ch", lineHeight: 1.5 }}>
+            Bachelor, master, doctoral, and short programs across every faculty.
+          </p>
+          <div style={{ display: "flex", gap: 10, marginTop: 28 }}>
+            <Button variant="primary" iconAfter="arrow_forward" onClick={() => window.dispatchEvent(new CustomEvent("kse:apply"))}>
+              Apply now
+            </Button>
+            <Button variant="secondary" onClick={() => routeGo("events")}>Open Days</Button>
+          </div>
+        </div>
+      </section>
+
+      {/* ── PROGRAMS LIST ─────────────────────────────────────── */}
+      <section className="usec">
+        <div className="kse-shell">
+          <UniPrograms onNav={onNav} hideHeader={true} noshell={true} />
+        </div>
+      </section>
+
+      {/* ── PARTNERS ──────────────────────────────────────────── */}
+      <UniPartnersCarousel />
+
+      <UniConsultBanner />
+      <UniFooter onNav={onNav} />
+    </div>
+  );
+}
+
+Object.assign(window, { UniBachelorPage, UniMasterPage, UniPhdPage, UniShortCoursesPage, UniAcademicProgramsPage });

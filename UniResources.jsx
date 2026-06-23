@@ -1,50 +1,131 @@
-// KSE University — Resources (quiet link row) + footer
-const RESOURCES = [
-  { ic: "school", t: "Moodle", s: "Learning" },
-  { ic: "hub", t: "KSE Hub", s: "Portal" },
-  { ic: "swap_horiz", t: "Mobility", s: "Exchanges" },
-  { ic: "description", t: "Documents", s: "Forms, policies" },
+// KSE University — Resources (airy link list) + Contact Us + footer
+
+const RESOURCE_LINKS = [
+  { name: "Moodle",     desc: "Learning management system",           href: "https://teaching.kse.org.ua/login/index.php", external: true  },
+  { name: "KSE Hub",    desc: "The main site of KSE ecosystem",        href: "https://kse.ua",                              external: true  },
+  { name: "Documents",  desc: "Forms, policies, templates",           href: "#/documents",                                         external: false },
 ];
-function UniResources({ onNav }) {
+
+function UniResources({ onNav, onConsult }) {
   return (
-    <section className="usec">
-      <div className="kse-shell">
-        <div className="usec__head">
-          <div>
-            <span className="usec__num">06</span>
-            <h2 className="usec__title">Resources &amp; contact</h2>
+    <>
+      {/* ── RESOURCES ─────────────────────────────────────────── */}
+      <section className="usec">
+        <div className="kse-shell">
+          <div className="usec__head" style={{ marginBottom: 32 }}>
+            <div>
+              <h2 className="usec__title">Resources</h2>
+            </div>
           </div>
-          <a href="#" className="usec__link" onClick={(e) => { e.preventDefault(); onNav("Resources"); }}>
-            All resources <Icon name="arrow_forward" size={18} />
-          </a>
+          <div style={{ marginTop: 8 }}>
+            {RESOURCE_LINKS.map((r, i) => (
+              <a
+                key={r.name}
+                href={r.href}
+                target={r.external ? "_blank" : undefined}
+                rel={r.external ? "noopener noreferrer" : undefined}
+                style={{
+                  display: "flex", alignItems: "center", justifyContent: "space-between",
+                  gap: 24, padding: "22px 0", textDecoration: "none",
+                  borderBottom: "1px solid var(--kse-border-soft)",
+                  borderTop: i === 0 ? "1px solid var(--kse-border-soft)" : "none",
+                  transition: "opacity .15s",
+                }}
+                onMouseEnter={e => e.currentTarget.style.opacity = "0.6"}
+                onMouseLeave={e => e.currentTarget.style.opacity = "1"}
+              >
+                <span style={{
+                  fontFamily: "var(--kse-font-sans)", fontWeight: 500,
+                  fontSize: 22, letterSpacing: "-0.02em", color: "var(--kse-title-light)",
+                  minWidth: 160,
+                }}>{r.name}</span>
+                <span style={{
+                  fontFamily: "var(--kse-font-ui)", fontSize: 14,
+                  color: "var(--kse-secondary)", flex: 1,
+                }}>{r.desc}</span>
+                <Icon
+                  name={r.external ? "open_in_new" : "arrow_forward"}
+                  size={18}
+                  style={{ color: "var(--kse-secondary)", flexShrink: 0 }}
+                />
+              </a>
+            ))}
+          </div>
         </div>
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(4,1fr)", gap: 16 }}>
-          {RESOURCES.map(r => (
-            <div key={r.t} onClick={() => onNav("Resources")}
-              style={{ display: "flex", alignItems: "center", gap: 14, border: "1px solid var(--kse-border)",
-                borderRadius: 12, padding: "18px 20px", cursor: "pointer", transition: ".15s" }}
-              onMouseEnter={e => e.currentTarget.style.background = "var(--kse-bg-light-2)"}
-              onMouseLeave={e => e.currentTarget.style.background = "transparent"}>
-              <Icon name={r.ic} size={24} />
+      </section>
+
+      {/* ── CONTACT US ────────────────────────────────────────── */}
+      <section className="usec usec--wash">
+        <div className="kse-shell">
+          <div className="usec__head" style={{ marginBottom: 28 }}>
+            <div>
+              <h2 className="usec__title">Contact us</h2>
+            </div>
+          </div>
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1.1fr", gap: 16, alignItems: "stretch" }}>
+            {/* Admissions */}
+            <div style={{ border: "1px solid var(--kse-border)", borderRadius: 14,
+              padding: "28px 28px 24px", background: "#fff" }}>
+              <div style={{ fontFamily: "var(--kse-font-ui)", fontSize: 11, fontWeight: 700,
+                letterSpacing: ".12em", textTransform: "uppercase",
+                color: "var(--kse-secondary)", marginBottom: 14 }}>Admissions</div>
+              <a href="tel:+380732486976" style={{
+                display: "block", fontFamily: "var(--kse-font-sans)", fontWeight: 500,
+                fontSize: 20, letterSpacing: "-0.01em", color: "var(--kse-title-light)",
+                textDecoration: "none", marginBottom: 6,
+              }}>+38 073 248 69 76</a>
+              <a href="mailto:applyto@kse.org.ua" style={{
+                display: "block", fontFamily: "var(--kse-font-ui)", fontSize: 14,
+                color: "var(--kse-secondary)", textDecoration: "none",
+              }}>applyto@kse.org.ua</a>
+            </div>
+            {/* General */}
+            <div style={{ border: "1px solid var(--kse-border)", borderRadius: 14,
+              padding: "28px 28px 24px", background: "#fff" }}>
+              <div style={{ fontFamily: "var(--kse-font-ui)", fontSize: 11, fontWeight: 700,
+                letterSpacing: ".12em", textTransform: "uppercase",
+                color: "var(--kse-secondary)", marginBottom: 14 }}>General questions</div>
+              <a href="tel:+380503963004" style={{
+                display: "block", fontFamily: "var(--kse-font-sans)", fontWeight: 500,
+                fontSize: 20, letterSpacing: "-0.01em", color: "var(--kse-title-light)",
+                textDecoration: "none", marginBottom: 6,
+              }}>+38 050 396 30 04</a>
+              <span style={{ display: "block", fontFamily: "var(--kse-font-ui)", fontSize: 14,
+                color: "var(--kse-secondary)" }}>Mon–Fri, 9:00–18:00</span>
+            </div>
+            {/* CTA */}
+            <div style={{
+              background: "var(--kse-accent-band)", borderRadius: 14,
+              padding: "28px 32px 24px",
+              display: "flex", flexDirection: "column", justifyContent: "space-between",
+            }}>
               <div>
-                <div style={{ fontFamily: "var(--kse-font-ui)", fontSize: 16, fontWeight: 600 }}>{r.t}</div>
-                <div style={{ fontFamily: "var(--kse-font-ui)", fontSize: 12, color: "var(--kse-secondary)" }}>{r.s}</div>
+                <div style={{ color: "#fff", fontFamily: "var(--kse-font-sans)", fontWeight: 500,
+                  fontSize: 20, letterSpacing: "-0.015em", marginBottom: 8 }}>
+                  Not sure where to start?
+                </div>
+                <div style={{ color: "rgba(255,255,255,0.65)", fontSize: 14, lineHeight: 1.55 }}>
+                  Tell us about your goals — we'll help you find the right program.
+                </div>
+              </div>
+              <div style={{ marginTop: 24 }}>
+                <Button variant="light" icon="chat_bubble" onClick={onConsult}>
+                  Get a consultation
+                </Button>
               </div>
             </div>
-          ))}
+          </div>
         </div>
-        <p className="lead" style={{ fontSize: 13, marginTop: 16 }}>
-          <strong style={{ color: "var(--kse-secondary)", fontWeight: 600 }}>External</strong> — Moodle and KSE Hub are external systems, no duplicated content.
-        </p>
-      </div>
-    </section>
+      </section>
+    </>
   );
 }
+
 
 function UniFooter({ onNav }) {
   const cols = {
     Study: ["Programs", "Admissions", "Grants & Aid", "Faculties", "Research"],
-    University: ["About", "Community", "Campus", "Contact"],
+    University: ["About", "Community", "Campus", "Contact Us"],
   };
   return (
     <footer style={{ background: "var(--kse-bg-dark-1)", color: "#fff" }}>

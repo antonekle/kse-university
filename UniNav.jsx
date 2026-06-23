@@ -7,8 +7,8 @@ function UniNav({ onNav, onCta, active }) {
       backdropFilter: "blur(10px)", borderBottom: "1px solid var(--kse-border-soft)" }}>
       <div className="kse-shell" style={{ display: "flex", alignItems: "center", gap: 24, height: 76 }}>
         <a href="#top" onClick={(e) => { e.preventDefault(); onNav("Home"); }}
-          style={{ display: "inline-flex", alignItems: "center", gap: 12 }}>
-          <span style={{ fontFamily: "var(--kse-font-sans)", fontWeight: 600, fontSize: 18, letterSpacing: "-0.02em", color: "#0D0D0D" }}>KSE University</span>
+          style={{ display: "inline-flex", alignItems: "center", flexShrink: 0 }}>
+          <img src="KSE_University_logo-black.svg" alt="KSE University" style={{ height: 28, width: "auto", display: "block" }} />
         </a>
         <nav style={{ display: "flex", gap: 22, marginLeft: 14 }}>
           {links.map(l => {

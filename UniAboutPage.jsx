@@ -4,9 +4,9 @@ function UniAboutPage({ onNav, onCta }) {
     {
       icon: "account_balance",
       title: "Academic structure",
-      sub: "Faculties & schools",
-      desc: "Five faculties spanning engineering, economics, mathematics, sociology, cybersecurity and defense engineering — each with its own academic council and research profile.",
-      link: "Faculties & Schools", route: "faculties",
+      sub: "Faculties",
+      desc: "Five faculties — Engineering School, Computer Technologies, Mathematics, Social Sciences and Economics — each with its own academic council and research profile.",
+      link: "Faculties", route: "faculties",
     },
     {
       icon: "school",
@@ -25,10 +25,10 @@ function UniAboutPage({ onNav, onCta }) {
   ];
 
   const links = [
-    { label: "Faculties & Schools", route: "faculties", icon: "account_balance" },
+    { label: "Faculties", route: "faculties", icon: "account_balance" },
     { label: "Research",            route: "research",  icon: "science" },
     { label: "Community",           route: "community", icon: "groups" },
-    { label: "Contacts",            route: "contacts",  icon: "mail" },
+    { label: "Contact Us",            route: "contacts",  icon: "mail" },
   ];
 
   return (
@@ -78,7 +78,7 @@ function UniAboutPage({ onNav, onCta }) {
               {[
                 { n: "1996", l: "Year founded" },
                 { n: "21+", l: "Degree programs" },
-                { n: "6", l: "Faculties & schools" },
+                { n: "5", l: "Faculties" },
                 { n: "1 200+", l: "Current students" },
               ].map(s => (
                 <div key={s.n} style={{ display: "flex", alignItems: "baseline", gap: 18,

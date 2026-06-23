@@ -3,7 +3,7 @@ const FOOT = {
   Units: ["University", "GBS", "ProfTech", "Foundation", "Institute"],
   Discover: ["Admissions", "Education", "News & Events", "Visit", "Community", "Research & Experts"],
   People: ["Board", "Management", "Faculty", "Experts"],
-  Connect: ["Contacts", "Media / Press", "Social Media Hub", "Careers"],
+  Connect: ["Contact Us", "Media / Press", "Social Media Hub", "Careers"],
   Foundation: ["Donate", "Projects", "Impact reports", "Grants & Aid"],
 };
 function FootCol({ title, items, onItem }) {
